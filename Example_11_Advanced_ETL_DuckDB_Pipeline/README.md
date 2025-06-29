@@ -68,7 +68,18 @@ flowchart TD
 
    - Place `code.py` in your Airflow DAGs folder.
    - Ensure the Airflow scheduler and webserver are running.
-4. **Run the DAG:**
+
+4. **Add Airflow FileSystem Connection:**
+
+   The DAG uses a FileSensor with the connection ID `fs_default`. Add this connection using the following command:
+
+   ```sh
+   airflow connections add fs_default \
+       --conn-type file \
+       --conn-extra '{"path": "/"}'
+   ```
+
+5. **Run the DAG:**
 
    - Trigger the DAG named `EXAMPLE_11_Advanced_ETL_DuckDB_Pipeline` from the Airflow UI.
 
